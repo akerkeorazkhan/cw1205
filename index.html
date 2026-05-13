@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Planets - Earth</title>
+    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@500&family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #070724;
+            --white: #FFFFFF;
+            --grey: #838391;
+            --earth-accent: #6D2ED5;
+            --border: rgba(255, 255, 255, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: url('https://i.ibb.co/5G78981/background-stars.svg');
+            color: var(--white);
+            font-family: 'League Spartan', sans-serif;
+            min-height: 100vh;
+        }
+
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 40px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-family: 'Antonio', sans-serif;
+            font-size: 28px;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            opacity: 0.7;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        nav ul li:hover, nav ul li.active-nav {
+            opacity: 1;
+        }
+
+        
+        main {
+            max-width: 1110px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .planet-section {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            align-items: center;
+            gap: 80px;
+            margin-bottom: 80px;
+        }
+
+        .planet-image img {
+            width: 100%;
+            max-width: 450px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .info-content h1 {
+            font-family: 'Antonio', sans-serif;
+            font-size: 80px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        #planet-description {
+            font-size: 14px;
+            line-height: 1.8;
+            color: var(--grey);
+            min-height: 120px; 
+            margin-bottom: 20px;
+        }
+
+        .source {
+            font-size: 14px;
+            color: var(--grey);
+            margin-bottom: 40px;
+        }
+
+        .source a {
+            color: var(--grey);
+            font-weight: 700;
+        }
+
+       
+        .tabs {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: white;
+            padding: 15px 25px;
+            text-align: left;
+            font-family: 'League Spartan', sans-serif;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background 0.3s;
+        }
+
+        .tab-btn span {
+            margin-right: 25px;
+            opacity: 0.5;
+        }
+
+        .tab-btn:hover:not(.active) {
+            background: rgba(216, 216, 216, 0.1);
+        }
+
+        .tab-btn.active {
+            background-color: var(--earth-accent);
+            border-color: var(--earth-accent);
+        }
+
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .stat-card {
+            border: 1px solid var(--border);
+            padding: 20px 25px;
+        }
+
+        .stat-card .label {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--grey);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .stat-card .value {
+            font-family: 'Antonio', sans-serif;
+            font-size: 40px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">THE PLANETS</div>
+        <nav>
+            <ul>
+                <li>Mercury</li>
+                <li>Venus</li>
+                <li class="active-nav">Earth</li>
+                <li>Mars</li>
+                <li>Jupiter</li>
+                <li>Saturn</li>
+                <li>Uranus</li>
+                <li>Neptune</li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="planet-section">
+            <div class="planet-image">
+                <img id="main-image" src="https://raw.githubusercontent.com/p-some-one/planets-fact-site/master/assets/planet-earth.svg" alt="Earth">
+            </div>
+
+            <div class="info-content">
+                <h1>Earth</h1>
+                <p id="planet-description">
+                    Third planet from the Sun and the only known planet to harbor life. About 29.2% of Earth's surface is land with remaining 70.8% is covered with water. Earth's distance from the Sun, physical properties and geological history have allowed life to evolve and thrive.
+                </p>
+                <div class="source">
+                    Source : <a href="https://en.wikipedia.org/wiki/Earth" target="_blank">Wikipedia ↗</a>
+                </div>
+
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="updateContent('overview', this)">
+                        <span>01</span> Overview
+                    </button>
+                    <button class="tab-btn" onclick="updateContent('structure', this)">
+                        <span>02</span> Internal Structure
+                    </button>
+                    <button class="tab-btn" onclick="updateContent('geology', this)">
+                        <span>03</span> Surface Geology
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats-grid">
+            <div class="stat-card">
+                <span class="label">Rotation Time</span>
+                <span class="value">0.99 Days</span>
+            </div>
+            <div class="stat-card">
+                <span class="label">Revolution Time</span>
+                <span class="value">365.26 Days</span>
+            </div>
+            <div class="stat-card">
+                <span class="label">Radius</span>
+                <span class="value">6,371 KM</span>
+            </div>
+            <div class="stat-card">
+                <span class="label">Average Temp.</span>
+                <span class="value">16°C</span>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        
+        const planetData = {
+            overview: "Third planet from the Sun and the only known planet to harbor life. About 29.2% of Earth's surface is land with remaining 70.8% is covered with water. Earth's distance from the Sun, physical properties and geological history have allowed life to evolve and thrive.",
+            structure: "Earth's interior is composed of a rocky mantle and a core that is divided into a solid inner core and a liquid outer core. The core is composed primarily of iron and nickel, along with some lighter elements like sulfur and oxygen.",
+            geology: "The surface of the Earth is divided into several rigid tectonic plates that migrate across the surface over periods of many millions of years. The planet's interior remains active, with a solid iron inner core and a liquid outer core."
+        };
+
+        function updateContent(type, button) {
+            
+            document.getElementById('planet-description').textContent = planetData[type];
+
+            
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            
+            button.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
